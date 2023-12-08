@@ -2,7 +2,7 @@
 This is a simple tcp proxy server that can be used to proxy any tcp connection. It can be used to proxy keydb, redis, memcached, or any other tcp connection.
 
 ### Production Ready
-Yes, it's production ready and it's being used to create a HA KeyDB (Redis drop-in replacement).
+Yes, it's production ready and it's being used to create a **HA KeyDB** (Redis drop-in replacement).
 
 ### Usage
 Check the **examples** folder for a **kubernetes** setup for KeyDB
