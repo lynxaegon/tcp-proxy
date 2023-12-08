@@ -13,7 +13,8 @@ You can also see an example config <a href="config.json.example">here</a>
 - It starts a **TCPChecker** service for all defined remotes in the config
 - The **TCPChecker** is responsible for checking if the remote is up or down
 - If the **remote** is down it automatically switches to the other defined **remote**
-- In case of KeyDB/Redis if the remote returns "Loading Keys" it will mark the **remote** as offline and switch to the other one
+- In case of **KeyDB/Redis** if the remote returns "Loading Keys" it will mark the **remote** as offline and switch to the other one
+- Each connection has a separate **ProxyContext** which is responsible for handling the upstream/downstream connections
 
 This setup is used to create a HA KeyDB (Redis drop-in replacement) with Active Replication.
 

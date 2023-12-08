@@ -33,7 +33,7 @@ module.exports = class ConnectionManager extends EventEmitter {
                 }
             });
             remote.socket.on("offline", (item) => {
-                // we presume that there are only 2 connections
+                // we presume that there are at least 2 connections
                 let offlineId = remote.socket.getConnectionId();
                 if(this.connections[0].id == offlineId) {
                     // the master went offline, so we swap masters
