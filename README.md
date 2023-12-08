@@ -1,8 +1,8 @@
 # TCP Proxy 
-This is a simple tcp proxy server that can be used to proxy any tcp connection. It can be used to proxy keydb, redis, memcached, or any other tcp connection.
+This is a simple tcp proxy server that can be used to proxy any tcp connection. It can be used to proxy keydb, redis, memcached, or any other tcp connection
 
 ### Production Ready
-Yes, it's production ready and it's being used to create a **HA KeyDB** (Redis drop-in replacement).
+Yes, it's **production** ready and it's being used to create a **HA <a href="https://keydb.dev">KeyDB</a>** (Redis drop-in replacement)
 
 ### Usage
 Check the <a href="examples/kubernetes">**examples**</a> folder for a **kubernetes** setup for KeyDB
@@ -16,7 +16,7 @@ You can also see an example config <a href="config.json.example">here</a>
 - In case of **KeyDB/Redis** if the remote returns "Loading Keys" it will mark the **remote** as offline and switch to the other one
 - Each connection has a separate **ProxyContext** which is responsible for handling the upstream/downstream connections
 
-This setup is used to create a HA KeyDB (Redis drop-in replacement) with Active Replication.
+This setup is used to create a **HA <a href="https://keydb.dev">KeyDB</a>** (Redis drop-in replacement) with **Active Replication**
 
 <a name="license"></a>
 ## License

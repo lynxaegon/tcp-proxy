@@ -1,7 +1,7 @@
 # Kubernetes
 
 ### HA KeyDB (Redis drop-in replacement)
-- We will be using KeyDB (https://docs.keydb.dev/) as our upstream Redis
+- We will be using KeyDB (https://keydb.dev/) as our upstream Redis
 
     - KeyDB supports Active Replication (https://docs.keydb.dev/docs/active-rep)
 
