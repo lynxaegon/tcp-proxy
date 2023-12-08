@@ -5,7 +5,7 @@ This is a simple tcp proxy server that can be used to proxy any tcp connection. 
 Yes, it's production ready and it's being used to create a **HA KeyDB** (Redis drop-in replacement).
 
 ### Usage
-Check the **examples** folder for a **kubernetes** setup for KeyDB
+Check the <a href="examples/kubernetes">**examples**</a> folder for a **kubernetes** setup for KeyDB
 
 You can also see an example config <a href="config.json.example">here</a> 
 
