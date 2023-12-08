@@ -1,35 +1,40 @@
 {
-  "local": {
-    "port": 6379
-  },
-  "checks": {
-    "commands": [
-      {
-        "command": "ping\r\n",
-        "expect": "+PONG\r\n"
+  "pools": [
+    {
+      "name": "keydb-proxy",
+      "local": {
+        "port": 6379
       },
-      {
-        "command": "set tcp-proxy:test-write 1\r\n",
-        "expect": "+OK\r\n"
-      }
-    ],
-    "options": {
-      "timeout": 250,
-      "interval": 250
-    }
-  },
-  "remote": [
-    {
-      "id": "redis-0",
-      "host": "127.0.0.1",
-      "port": 4000,
-      "connectionTimeout": 250
-    },
-    {
-      "id": "redis-1",
-      "host": "127.0.0.1",
-      "port": 4001,
-      "connectionTimeout": 250
+      "checks": {
+        "commands": [
+          {
+            "command": "ping\r\n",
+            "expect": "+PONG\r\n"
+          },
+          {
+            "command": "set tcp-proxy:test-write 1\r\n",
+            "expect": "+OK\r\n"
+          }
+        ],
+        "options": {
+          "timeout": 250,
+          "interval": 250
+        }
+      },
+      "remote": [
+        {
+          "id": "keydb-0",
+          "host": "127.0.0.1",
+          "port": 4000,
+          "connectionTimeout": 250
+        },
+        {
+          "id": "keydb-1",
+          "host": "127.0.0.1",
+          "port": 4001,
+          "connectionTimeout": 250
+        }
+      ]
     }
   ]
 }
