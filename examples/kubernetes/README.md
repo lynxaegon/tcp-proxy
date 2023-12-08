@@ -26,6 +26,5 @@ kubectl apply -f tcp-proxy/*
 ### Connecting to HA KeyDB
 - To connect to the HA KeyDB, you have to connect to the TCPProxy service and port 6379
 
-
 ## That's it! 
-You now have a HA KeyDB setup witch Active Replication and TCPProxy load balancing.
+You now have a **HA KeyDB** setup with **Active Replication** and TCPProxy load balancing.
