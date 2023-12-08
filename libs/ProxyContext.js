@@ -15,7 +15,6 @@ module.exports = class ProxyContext {
 
     write(socket, data) {
         if(socket.getConnectionId() == this.localSocket.getConnectionId()) {
-            // console.log("local:", data.toString("utf8"));
             // local -> remote
             if(!this.remoteSocket) {
                 this.remoteSocket = this.proxy.getConnection(this);
@@ -41,8 +40,6 @@ module.exports = class ProxyContext {
             }
         } else {
             // remote -> local
-            // console.log("remote:", data.toString("utf8"));
-
             if(data.toString().startsWith("-LOADING")) {
                 return this.proxy.connectionManager.dropConnection(this.remoteSocket.getConnectionId());
             }
@@ -86,6 +83,7 @@ module.exports = class ProxyContext {
         }
 
         // TODO: uncomment to support auto switch & heal
+        // TODO: requires more tests
         // if(this.waitingForReply) {
         //     this.buffer = [];
         //     this.write(this.localSocket, this.lastCommand);
