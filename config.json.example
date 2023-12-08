@@ -1,0 +1,29 @@
+{
+  "local": {
+    "port": 6379
+  },
+  "checks": {
+    "commands": [
+      {
+        "command": "ping\r\n",
+        "expect": "+PONG\r\n"
+      }
+    ],
+    "options": {
+      "timeout": 1000,
+      "interval": 1000
+    }
+  },
+  "remote": [
+    {
+      "host": "127.0.0.1",
+      "port": 6378,
+      "connectionTimeout": 1000
+    },
+    {
+	  "host": "127.0.0.1",
+	  "port": 6379,
+	  "connectionTimeout": 1000
+	}
+  ]
+}
