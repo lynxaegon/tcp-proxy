@@ -5,7 +5,7 @@ This is a simple tcp proxy server that can be used to proxy any tcp connection. 
 Yes, it's **production** ready and it's being used to create a **HA <a href="https://keydb.dev">KeyDB</a>** (Redis drop-in replacement)
 
 ### Usage
-- Check the <a href="examples/kubernetes">**examples**</a> folder for a **kubernetes** setup for KeyDB
+- Check the <a href="examples/kubernetes">**examples**</a> folder for a **kubernetes** setup of a **HA <a href="https://keydb.dev">KeyDB</a>**
 
 - You can also see an example config <a href="config.json.example">here</a> 
   - It's **multitenant** so you can add as many **pools** and **remotes** as you want
