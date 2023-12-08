@@ -7,23 +7,29 @@
       {
         "command": "ping\r\n",
         "expect": "+PONG\r\n"
+      },
+      {
+        "command": "set tcp-proxy:test-write 1\r\n",
+        "expect": "+OK\r\n"
       }
     ],
     "options": {
-      "timeout": 1000,
-      "interval": 1000
+      "timeout": 250,
+      "interval": 250
     }
   },
   "remote": [
     {
+      "id": "redis-0",
       "host": "127.0.0.1",
-      "port": 6378,
-      "connectionTimeout": 1000
+      "port": 4000,
+      "connectionTimeout": 250
     },
     {
-	  "host": "127.0.0.1",
-	  "port": 6379,
-	  "connectionTimeout": 1000
-	}
+      "id": "redis-1",
+      "host": "127.0.0.1",
+      "port": 4001,
+      "connectionTimeout": 250
+    }
   ]
 }
