@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: keydb
+  namespace: keydb
+spec:
+  serviceName: keydb
+  replicas: 2
+  selector:
+    matchLabels:
+      app: keydb
+  template:
+    metadata:
+      labels:
+        app: keydb
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                      - keydb
+              topologyKey: "kubernetes.io/hostname"
+      initContainers:
+        - name: config
+          image: eqalpha/keydb:x86_64_v6.2.2
+          command: ["/bin/sh"]
+          args: ["-c","/usr/local/bin/join.sh"]
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          volumeMounts:
+            - name: keydb-fr-api-config
+              mountPath: /etc/keydb/
+            - name: config
+              mountPath: /tmp/keydb/keydb.conf
+              subPath: keydb.conf
+            - name: join-sh
+              mountPath: /usr/local/bin/join.sh
+              subPath: join.sh
+      containers:
+        - name: keydb
+          image: eqalpha/keydb:x86_64_v6.2.2
+          command: ["keydb-server"]
+          args: ["/etc/keydb/keydb.conf"]
+          ports:
+            - containerPort: 6379
+              name: keydb
+          resources:
+            requests:
+              cpu: "2"
+              memory: "2Gi"
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: keydb-config
+              mountPath: /etc/keydb/
+      volumes:
+        - name: keydb-config
+          emptyDir: {}
+        - name: config
+          configMap:
+            name: keydb-config
+            items:
+              - key: keydb.conf
+                path: keydb.conf
+        - name: join-sh
+          configMap:
+            name: keydb-config
+            items:
+              - key: join.sh
+                path: join.sh
+                mode: 0755
+
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "gp2"
+        resources:
+          requests:
+            storage: 50Gi

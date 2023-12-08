@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tcp-proxy
+  namespace:
+  labels:
+    app: tcp-proxy
+spec:
+  replicas: 3
+  serviceName: tcp-proxy
+  selector:
+    matchLabels:
+      app: tcp-proxy
+  template:
+    metadata:
+      labels:
+        app: tcp-proxy
+    spec:
+      containers:
+        - name: tcp-proxy
+          image: tcp-proxy:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 6379
+          env:
+            - name: DEBUG
+              value: "*,-tcp-checker"
