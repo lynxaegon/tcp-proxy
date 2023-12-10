@@ -1,13 +1,13 @@
 {
   "name": "tcp-proxy",
   "version": "1.0.0",
-  "description": "",
+  "description": "A tcp proxy server that can be used to proxy and load balance any tcp connection. Used to create a HA KeyDB/Redis",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Andrei Vaduva",
+  "license": "MIT",
   "dependencies": {
     "debug": "^4.3.4",
     "ioredis": "^5.3.2"
