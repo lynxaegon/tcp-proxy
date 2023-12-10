@@ -5,6 +5,8 @@ This is a simple tcp proxy server that can be used to proxy any tcp connection. 
 Yes, it's **production** ready and it's being used to create a **HA <a href="https://keydb.dev">KeyDB</a>** (Redis drop-in replacement)
 
 ### Benchmarks
+The performance penalty is **~7%** compared to a direct connection to a KeyDB instance
+
 You can see the benchmarks <a href="benchmarks">here</a>
 
 ### Usage
